@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mozg_squidfacil translate="title">
+                                        <title>Squid Fácil</title>
+                                    </mozg_squidfacil>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <mozg_base>
+                        <children>
+                            <mozg_squidfacil translate="title">
+                                <title>Squid Fácil</title>
+                                <sort_order>60</sort_order>
+                            </mozg_squidfacil>
+                        </children>
+                    </mozg_base>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <mozg_base>
+            <children>
+                <mozg_squidfacil translate="title">
+                    <title>Squid Fácil</title>
+                    <sort_order>60</sort_order>
+                    <action>adminhtml/squidfacil/new</action>
+                </mozg_squidfacil>
+            </children>
+        </mozg_base>
+    </menu>
+</config>

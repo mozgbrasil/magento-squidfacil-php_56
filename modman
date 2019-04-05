@@ -1,0 +1,13 @@
+## Modman Module Mozg
+app/code/local/Mozg/Squidfacil/	app/code/local/Mozg/Squidfacil/
+app/design/adminhtml/default/default/layout/mozg_squidfacil.xml	app/design/adminhtml/default/default/layout/mozg_squidfacil.xml
+app/design/adminhtml/default/default/template/mozg_squidfacil/	app/design/adminhtml/default/default/template/mozg_squidfacil/
+app/design/frontend/base/default/layout/mozg_squidfacil.xml	app/design/frontend/base/default/layout/mozg_squidfacil.xml
+app/design/frontend/base/default/template/mozg_squidfacil/	app/design/frontend/base/default/template/mozg_squidfacil/
+app/etc/modules/Mozg_Squidfacil.xml	app/etc/modules/Mozg_Squidfacil.xml
+app/locale/pt_BR/Mozg_Squidfacil.csv	app/locale/pt_BR/Mozg_Squidfacil.csv
+js/mozg_squidfacil/	js/mozg_squidfacil/
+lib/Mozg/Squidfacil/ lib/Mozg/Squidfacil/
+skin/adminhtml/default/default/images/mozg_squidfacil/	skin/adminhtml/default/default/images/mozg_squidfacil/
+skin/frontend/base/default/css/mozg_squidfacil/	skin/frontend/base/default/css/mozg_squidfacil/
+skin/frontend/base/default/images/mozg_squidfacil/	skin/frontend/base/default/images/mozg_squidfacil/

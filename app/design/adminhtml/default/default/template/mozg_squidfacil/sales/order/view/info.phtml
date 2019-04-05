@@ -1,0 +1,134 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+
+<?php
+
+//dump(get_class($this));
+//dump($this->getData());
+//dump(get_class_methods(get_class($this)));
+
+$squidFacilOrder = $this->getSquidFacilOrder();
+//dump($getSquidFacilOrder);
+$status = $squidFacilOrder['status'];
+$statusCondition = ($status == 200);
+
+?>
+
+<div class="box-left" id="squidfacil-box-left" style="display:none">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4>Squid Fácil</h4>
+        </div>
+        <fieldset>
+            <div id="order_squidfacil_block">
+                <div class="order-squidfacil-form">
+                    <pre id="squidfacil_request"></pre>                    
+                    <div class="divider"></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<div class="box-right">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4>Squid Fácil</h4>
+        </div>
+        <fieldset>
+            <div id="order_squidfacil_block">
+                <div>
+                    <?php if ( $statusCondition ): ?>
+                    <span class="field-row">&nbsp;</span>                    
+                    <div class="divider"></div>
+                    <?php endif;?>
+                    <?php if ( !$statusCondition ): ?>
+                    <span class="field-row">
+                        <p class="form-buttons">
+                            <button type="button" class="scalable" onclick="squidFacilInsertOrder()" style="" id="button_request"><span><span><span>Inserir pedido</span></span></span></button>
+                        </p>
+                    </span>                    
+                    <div class="divider"></div>
+                    <?php endif;?>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<?php
+
+$params = $this->getRequest()->getParams();
+$order_id = $params['order_id'];
+
+$urlSquidFacilInsertOrder = Mage::helper('adminhtml')->getUrl('adminhtml/squidfacil/insertOrder/', array('order_id'=>$order_id));
+
+?>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var _preview = true;
+
+    function squidFacilInsertOrder(){
+
+        console.log(_preview);
+
+        var url = '<?php echo $urlSquidFacilInsertOrder; ?>preview/' + _preview + '/';
+
+        //window.open(url); return;
+
+        var req = new Ajax.Request( url, {
+            evalScripts: true,
+            method: 'get',
+            asynchronous: true,
+            parameters:'',
+            onLoading: function(transport) {
+                console.log('onLoading');
+            },
+            onCreate: function(transport) {
+                console.log('onCreate');
+            },
+            onComplete: function(transport) {
+                console.log('onComplete');
+                console.log(transport);
+
+                var response = transport.responseJSON;
+                console.log(response);
+
+                if( response.status && (response.status != 200) ){
+                    alert(response.detail);
+                }else{
+
+                    var preview = response.preview;
+                    var preview = JSON.stringify(preview,null,'\t');
+
+                    
+                    $('squidfacil-box-left').show();
+
+                    $('squidfacil_request').innerHTML = preview;
+
+                    $('button_request').addClassName("success");
+
+                    parent._preview = false;
+
+                }
+
+
+            }
+        });
+
+    }
+
+//]]>
+</script>
+
+<div class="clear"></div>
+
+<?php echo $this->getChildHtml(); ?>
